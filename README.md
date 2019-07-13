@@ -1,11 +1,10 @@
-# Web DB III Guided Project
+# Web DB IV Guided Project
 
-Guided project for **Web DB III** Module.
+Guided project for **Web DB IV** Module.
 
 ## Prerequisites
 
 - [SQLite Studio](https://sqlitestudio.pl/index.rvt?act=download) installed.
-- [This Query Tool Loaded in the browser](https://www.w3schools.com/Sql/tryit.asp?filename=trysql_select_top).
 - [Postman](https://www.getpostman.com/downloads/) installed.
 
 ## Project Setup
