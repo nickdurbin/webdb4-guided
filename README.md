@@ -1,6 +1,6 @@
-# Web DB IV Guided Project
+# Web DB III Guided Project
 
-Guided project for **Web DB IV** Module.
+Guided project for **Web DB III** Module.
 
 ## Prerequisites
 
