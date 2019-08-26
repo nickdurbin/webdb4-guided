@@ -8,59 +8,64 @@ const server = express();
 server.use(helmet());
 server.use(express.json());
 
-server.get('/api/species', async (req, res) => {
+server.get('/api/species', (req, res) => {
   // get all species from the database
-  try {
-    const species = await db('species'); 
+  db('species')
+  .then(species => {
     res.status(200).json(species);
-  } catch (error) {
+  })
+  .catch(error => {
     res.status(500).json(error);
-  }
+  });
 });
 
-server.get('/api/animals', async (req, res) => {
+server.get('/api/animals', (req, res) => {
   // get all animals from the database
-  try {
-    // include species name
-    const animals = await db('animals')
-    .leftJoin('species', 'species.id', 'species_id'); 
-
+  // include species name
+  db('animals as a')
+    .leftJoin('species as s', 's.id', 'a.species_id')
+    .select('a.id', 'a.animal_name', 's.species_name')
+  .then(animals => {
     res.status(200).json(animals);
-  } catch (error) {
+  })
+  .catch(error => {
     res.status(500).json(error);
-  }
+  });
 });
 
 // create animal
-server.post('/api/animals', async (req, res) => {
-  try {
-    const [id] = await db('animals').insert(req.body);
+server.post('/api/animals', (req, res) => {
+  db('animals').insert(req.body)
+  .then(ids => {
+    const id = ids[0];
 
-    const animal = await db('animals')
+    db('animals')
       .where({ id })
-      .first();
-
-    res.status(201).json(animal);
-  } catch (error) {
+      .first()
+    .then(animal => {
+      res.status(201).json(animal);
+    });
+  })
+  .catch(error => {
     res.status(500).json(error);
-  }
+  });
 });
 
 // remove species
-server.delete('/api/species/:id', async (req, res) => {
-  try {
-    const count = await db('species')
-      .where({ id: req.params.id })
-      .del();
-
+server.delete('/api/species/:id', (req, res) => {
+  db('species')
+    .where({ id: req.params.id })
+    .del()
+  .then(count => {
     if (count > 0) {
       res.status(204).end();
     } else {
       res.status(404).json({ message: 'Record not found' });
     }
-  } catch (error) {
+  })
+  .catch(error => {
     res.status(500).json(error);
-  }
+  });
 });
 
 module.exports = server;
