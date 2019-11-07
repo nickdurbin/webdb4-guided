@@ -1,8 +1,19 @@
-# Requirements
+# Data Modeling Notes
 
-A client has hired you to track zoo animals.
-For each individual animal, you must track that their name, species, and all zoos in which they have resided (including zoo name and address).
+## Requirements
+
+A client has hired you to build an API for managing `zoos` and the `animals` kept at each `zoo`. The API will be use for `zoos` in the _United States of America_, no need to worry about addresses in other countries.
+
+For the `zoos` the client wants to record:
+
+- name.
+- address.
+
+For the `animals` the client wants to record:
+
+- name.
+- species.
+- list of all the zoos where they have resided.
 
 Determine the database tables necessary to track this information.
-
 Label any relationships between table.
