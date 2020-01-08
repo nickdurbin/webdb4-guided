@@ -1,6 +1,5 @@
-
-exports.seed = function(knex, Promise) {
-  return knex('species').insert([
+exports.seed = async (knex) => {
+  await knex("species").insert([
     { species_name: "Star-nosed Mole" }, 
     { species_name: "Platypus" }, 
     { species_name: "Chameleon" }, 
@@ -9,7 +8,7 @@ exports.seed = function(knex, Promise) {
     { species_name: "Anteater" }, 
     { species_name: "Minotaur" }, 
     { species_name: "Raccoon" },
-    { species_name: 'Flamingo' },
-    { species_name: 'Kookaburra' }
-  ]);
-};
+    { species_name: "Flamingo" },
+    { species_name: "Kookaburra" },
+  ])
+}
