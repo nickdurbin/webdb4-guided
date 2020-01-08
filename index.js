@@ -23,7 +23,7 @@ server.get("/api/animals", async (req, res, next) => {
     // include species name
     const animals = await db("animals as a")
       .leftJoin("species as s", "s.id", "a.species_id")
-      .select("a.id", "a.name", "s.name")
+      .select("a.id", "a.name as animal_name", "s.name as species_name")
     
     res.json(animals)
   } catch(err) {

@@ -1,14 +1,14 @@
 exports.seed = async (knex) => {
   await knex("species").insert([
-    { species_name: "Star-nosed Mole" }, 
-    { species_name: "Platypus" }, 
-    { species_name: "Chameleon" }, 
-    { species_name: "Snail" },
-    { species_name: "Blue-footed Booby" }, 
-    { species_name: "Anteater" }, 
-    { species_name: "Minotaur" }, 
-    { species_name: "Raccoon" },
-    { species_name: "Flamingo" },
-    { species_name: "Kookaburra" },
+    { name: "Star-nosed Mole" },
+    { name: "Platypus" },
+    { name: "Chameleon" },
+    { name: "Snail" },
+    { name: "Blue-footed Booby" },
+    { name: "Anteater" },
+    { name: "Minotaur" },
+    { name: "Raccoon" },
+    { name: "Flamingo" },
+    { name: "Kookaburra" }, // id: 10
   ])
 }
